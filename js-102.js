@@ -72,8 +72,33 @@ function caesarCipher(string, offset){
     }
     return newString;
 }
-console.log(caesarCipher('genius without education is like silver in the mine', 13));
 
+function caesarDeCipher(string, offset){
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    let newString = ' ';
+    string = string.toLowerCase();
+    for (let stringIndex = 0; stringIndex < string.length; stringIndex++){
+        if (string[stringIndex] === ' '){
+            newString += ' ';
+        }
+        for (let alphabetIndex = 0; alphabetIndex < alphabet.length; alphabetIndex++){
+            if (string[stringIndex] === alphabet[alphabetIndex]){
+                let newIndex = '';
+                if (alphabetIndex + offset < 26){
+                    newIndex = (alphabetIndex) + offset;
+                }else {
+                    newIndex = ((alphabetIndex + 1) + offset) - (alphabet.length + 1);
+                }
+                // console.log(newIndex)
+                newString += alphabet[newIndex];
+                break;
+            }
+        }
+    }
+    return newString;
+}
+const ciphered = caesarCipher('Genius without education is like silver in the mine', 13);
+console.log(caesarDeCipher(ciphered, 13))
 
 function leetSpeak(string){
     string = string.toLowerCase();
