@@ -97,8 +97,8 @@ function caesarDeCipher(string, offset){
     }
     return newString;
 }
-const ciphered = caesarCipher('Genius without education is like silver in the mine', 13);
-console.log(caesarDeCipher(ciphered, 13))
+// const ciphered = caesarCipher('Genius without education is like silver in the mine', 13);
+// console.log(caesarDeCipher(ciphered, 13))
 
 function leetSpeak(string){
     string = string.toLowerCase();
@@ -135,3 +135,26 @@ function leetSpeak(string){
 }
 
 // leetSpeak('Leet');
+
+function longVowel(string){
+    let longString = '';
+    for (let char = 0; char < string.length; char++){
+        // console.log(string[char])
+        // if index is the last index of the string, then we knew we can't check on the next index without getting an index
+        if (char === string.length - 1){
+            longString += string[char];
+        // if the next immediate character is the same, and it is also a vowel, then we add five of that character to our newString variable
+        }else if ((string[char] === string[char + 1]) && (string[char] === 'a' || string[char] === 'e' || string[char] === 'i' || string[char] === 'o' || string[char] === 'u')){
+            // only do 4 because the second character in the string variable will go through loop, it won't trigger this particular else if
+            // statement, and will therefore simply be added with the last else statement to the longString variable.
+            longString += string[char].repeat(4);
+        }else{
+
+            longString += string[char];
+        }
+        // console.log(longString)
+    }
+    return longString;
+}
+
+console.log(longVowel('Good'))
