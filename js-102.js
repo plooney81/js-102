@@ -3,7 +3,7 @@ function printNumbers(start, end){
         console.log(i);
     }
 }
-// printNumbers(1,10);
+printNumbers(1,10);
 
 function printSquare(number){
     for (let i = 0; i < number; i++){
@@ -11,7 +11,7 @@ function printSquare(number){
         console.log('-'.repeat(number))
     }
 }
-// printSquare(5);
+printSquare(5);
 
 function printBox(width, height){
     // Top of box
@@ -23,7 +23,7 @@ function printBox(width, height){
         }
     }
 }
-// printBox(6, 4)
+printBox(6, 4)
 
 function printBanner(text){
     for (let i = 0; i < 3; i++){
@@ -34,8 +34,21 @@ function printBanner(text){
         }
     }
 }
-// printBanner('Welcome to DigitalCrafts')
-// 
+printBanner('Welcome to DigitalCrafts')
+
+
+function factorNumber(number){
+    factorArray = [];
+    for (let counter = 1; counter <= number; counter++){
+        if (number % counter === 0){
+            factorArray.push(counter);
+        }
+    }
+    return factorArray;
+}
+let someThing = factorNumber(120)
+console.log(someThing)
+
 function leetSpeak(string){
     string = string.toLowerCase();
     let newString = '';
