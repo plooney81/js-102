@@ -157,4 +157,13 @@ function longVowel(string){
     return longString;
 }
 
-console.log(longVowel('Good'))
+// console.log(longVowel('Good'))
+
+function sumNumbers(someArray){
+    let addition = 0;
+    for (let numb = 0; numb < someArray.length; numb++){
+        addition += someArray[numb];
+    }
+    return addition;
+}
+// console.log(sumNumbers([1, 4, 8]));
