@@ -17,9 +17,9 @@ function printBox(width, height){
     // Top of box
     for(let i = 1; i <= height; i++){
         if(i === 1 || i === height){
-            console.log(' ' + '-'.repeat(width - 2) + ' ')
+            console.log('*'.repeat(width))
         }else{
-            console.log('|' + ' '.repeat(width-2) + '|')
+            console.log('*' + ' '.repeat(width-2) + '*')
         }
     }
 }
