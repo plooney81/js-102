@@ -19,23 +19,33 @@ function matrixCheck(first){
 }
 // checks the height of the two matrices and then calls our first matrixCheck function to get the columns for both of the matrices
 // and checks to make sure those match as well.
-function twoMatricesCheck(first, second){
+function twoMatricesCheck(first, second, type){
     let firstLength = matrixCheck(first);
     let secondLength = matrixCheck(second);
-    if (first.length != second.length || firstLength != secondLength){
-        console.log('These matrices are not the same size');
-        return false;
+    if (type === 'add'){
+        if (first.length != second.length || firstLength != secondLength){
+            console.log('These matrices are not the same size');
+            return false;
+        } else {
+            return true;
+        }
     } else {
-        return true;
+        if (first.length != secondLength || second.length != firstLength){
+            console.log('These matrices are not the same size');
+            return false;
+        } else {
+            return true;
+        }
     }
+
 }
 
 // only intended to be run after the matrixCheck and twoMatricesCheck have been run
 // returns an empty matrix that is the same number of rows and columns that the two 
 // matrices given as arguments are...it checks if they are the same size or not.
-function initiateEmptyArray(first, second){
+function initiateEmptyArray(first, second, type){
     let emptyArray = [];
-    if (twoMatricesCheck(first, second)){
+    if (twoMatricesCheck(first, second, type)){
         for(let row = 0; row < first.length; row++){
             emptyArray.push(['\,'.repeat(first[0].length)])
         }
@@ -60,22 +70,24 @@ function matrixAdd(first, second){
     }
 }
 
+
+// only good for matrices of the exact same dimensions
 function matrixMult(firstArray, secondArray){
     let multMatrix = initiateEmptyArray(firstArray, secondArray);
-    for (let outerRow = 0; outerRow < firstArray.length; outerRow++){
-        // for each outerRow we need to reinitiate our rowMult array
-        rowMult = [];
+    for (let rm = 0; rm < firstArray.length; rm++){
+        // for each rm we need to reinitiate our rowMult array
         // in the rowMult, the first index is consistent, the second is the one we loop through to grab the numbers from the first array
-        for (let row = 0; row < firstArray.length; row++){
-            rowMult.push(firstArray[outerRow][row]);
+        rowMult = [];
+        for (let col = 0; col < firstArray[0].length; col++){
+            rowMult.push(firstArray[rm][col]);
         }
-        for (let outerCol = 0; outerCol < firstArray.length; outerCol++){
-            // for each outerCol we need to reinitiate our colMult array
+        for (let cm = 0; cm < firstArray.length; cm++){
+            // for each cm we need to reinitiate our colMult array
+                // in the colMult, the first index is the one we loop through to grab all the value, while the second is the one that is staying consistent
+                // to the cm value.
             colMult = [];
-            // in the colMult, the first index is the one we loop through to grab all the value, while the second is the one that is staying consistent
-            // to the outerCol value.
-            for (let row = 0; row < firstArray.length; row++){
-                colMult.push(secondArray[row][outerCol]);
+            for (let row = 0; row < secondArray.length; row++){
+                colMult.push(secondArray[row][cm]);
             }
             // then we need to loop through all of our values in the colMult and rowMult...they should be the same length
             // we then add the multiplication of the two arrays at the same index to the newNumb variable
@@ -84,8 +96,8 @@ function matrixMult(firstArray, secondArray){
                 newNumb += rowMult[index] * colMult[index]
             }
             // once we are done looping through the two multiplaction arrays
-            // we save that number to multMatrix at the outerRow and outerCol indeces.
-            multMatrix[outerRow][outerCol] = newNumb;
+            // we save that number to multMatrix at the rm and cm indeces.
+            multMatrix[rm][cm] = newNumb;
         }
     }
     return multMatrix;
@@ -95,12 +107,13 @@ function matrixMult(firstArray, secondArray){
 
 
 
-const firstArray = [
+const secondArray = [
     [2, -2],
     [5, 3],
+    [3, 2],
 ];
-const secondArray = [
-    [-1, 4],
-    [7, -6],
+const firstArray = [
+    [-1, 4, 1],
+    [7, -6, 2],
 ];
-console.log(matrixMult(firstArray, secondArray));
+console.log(matrixMult(firstArray, secondArray, 'mult'));
