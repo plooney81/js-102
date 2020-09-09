@@ -71,7 +71,6 @@ function matrixAdd(first, second){
 }
 
 
-// only good for matrices of the exact same dimensions
 function matrixMult(firstArray, secondArray){
     let multMatrix = initiateEmptyArray(firstArray, secondArray);
     for (let rm = 0; rm < firstArray.length; rm++){
