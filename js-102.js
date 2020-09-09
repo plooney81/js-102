@@ -167,3 +167,19 @@ function sumNumbers(someArray){
     return addition;
 }
 // console.log(sumNumbers([1, 4, 8]));
+
+function positiveNumbers(someArray){
+    let onlyPositives = [];
+    for (let index = 0; index < someArray.length; index++){
+        if (someArray[index] >= 0){
+            onlyPositives.push(someArray[index]);
+        }
+    }
+    return onlyPositives;
+}
+// const first = [1, -3, 5, -3, 0];
+// console.log(positiveNumbers(first));
+// const second = [1, 2, 3];
+// console.log(positiveNumbers(second));
+// const third = [-1, -2, -3];
+// console.log(positiveNumbers(third));
