@@ -56,11 +56,11 @@ function initiateEmptyArray(first, second, type){
 }
 
 
-function matrixAdd(first, second){
+function matrixAdd(first, second, type){
     // runs our matrices checks, first to make sure the columns within each matrix are the same length,
     // then it makes sure the columns and rows are the same length between the two matrices.
-    if (initiateEmptyArray(first, second)){
-        let addMatrix = initiateEmptyArray(first, second);
+    if (initiateEmptyArray(first, second, type)){
+        let addMatrix = initiateEmptyArray(first, second, type);
         for (let row = 0; row < first.length; row++){
             for (let col = 0; col < first[0].length; col++){
                 addMatrix[row][col] = first[row][col] + second[row][col]
@@ -71,8 +71,8 @@ function matrixAdd(first, second){
 }
 
 
-function matrixMult(firstArray, secondArray){
-    let multMatrix = initiateEmptyArray(firstArray, secondArray);
+function matrixMult(firstArray, secondArray, type){
+    let multMatrix = initiateEmptyArray(firstArray, secondArray, type);
     for (let rm = 0; rm < firstArray.length; rm++){
         // for each rm we need to reinitiate our rowMult array
         // in the rowMult, the first index is consistent, the second is the one we loop through to grab the numbers from the first array
