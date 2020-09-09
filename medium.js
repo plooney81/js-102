@@ -1,4 +1,4 @@
-// Matrix multiplication function
+// Matrix functions
 // given a 2 - 2D arrays, the function returns a new two-dimensional array containing their matrix sum
 
 // Matrix Check function notes:
